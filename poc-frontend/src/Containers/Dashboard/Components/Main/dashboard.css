@@ -1,0 +1,60 @@
+.dashboard {
+    min-height: 100vh;
+    font-family: Roboto, serif;
+    background: #475480;
+}
+
+.dashboard .logo-large {
+    height: 50px;
+    margin-left: auto;
+}
+
+.dashboard .logo {
+    height: 15px;
+    margin: 15px 5px;
+}
+
+.dashboard p,
+.dashboard h3,
+.dashboard h4 {
+    color: #ffffff;
+}
+
+.dashboard p {
+    font-size: 20px;
+}
+
+.dashboard .logo-container img {
+    float: left;
+}
+
+.dashboard .drawer img {
+    height: 30px;
+    margin: 75px auto 10px auto;
+    display: block;
+}
+
+.dashboard span.menu-item {
+    color: #ffffff !important;
+}
+
+.dashboard .menu-item.selected {
+    color: #ffce00 !important;
+}
+
+.dashboard hr {
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dashboard .dbet-balance {
+    min-width: 250px;
+    padding-top: 10px;
+}
+
+.dashboard .dbet-balance .highlight {
+    color: #ffce00 !important;
+}
+
+.dashboard .dbet-balance p {
+    font-size: 1em;
+}

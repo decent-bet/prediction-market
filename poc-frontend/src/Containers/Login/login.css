@@ -1,0 +1,19 @@
+.login {
+    min-height: 100vh;
+    padding-top: 30vh;
+    font-family: Roboto, serif;
+    background:
+            linear-gradient(to bottom, rgba(0,0,0, 0.1) 0%, rgba(0,0,0, 0.1) 100%),
+            url('../../assets/images/login-bg.jpg');
+    background-size: cover;
+}
+
+.login .logo {
+    height: 50px;
+    margin-left: auto;
+}
+
+.login p {
+    color: #ffffff;
+    font-size: 20px;
+}

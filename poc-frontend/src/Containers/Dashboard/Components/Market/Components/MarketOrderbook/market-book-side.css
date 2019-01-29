@@ -1,0 +1,37 @@
+.view-market .market-book-side .header {
+    background: #29344F;
+}
+
+.view-market .market-book-side .title {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    margin: 5px;
+}
+
+.view-market .market-book-side .long {
+    color: #64c162;
+}
+
+.view-market .market-book-side .short {
+    color: #c11821;
+}
+
+.view-market .market-book-side .no-orders {
+    font-size: 1em;
+    text-align: center;
+    font-weight: 300;
+    padding: 25px;
+    min-height: 100px;
+}
+
+.view-market .market-book-side .record:hover {
+    background: #313a58;
+}
+
+.view-market .market-book-side .record p {
+    font-size: 0.8em;
+    margin-left: 5px;
+    margin-bottom: 0;
+    padding: 15px 0;
+    cursor: pointer;
+}

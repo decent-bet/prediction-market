@@ -1,0 +1,13 @@
+.dashboard-home h1 {
+    color: #ffffff !important;
+    font-weight: 300;
+}
+
+.dashboard-home .market-list {
+    margin-top: 40px;
+}
+
+.dashboard-home .create-market-hint {
+    margin-top: 0;
+    font-size: 0.9em;
+}

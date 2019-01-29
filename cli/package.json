@@ -1,0 +1,31 @@
+{
+  "name": "dbet-prediction-market-cli",
+  "version": "1.0.0",
+  "description": "DBET 0x P2P prediction market cli",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "init-contracts": "./init-contracts.sh",
+    "approve-and-transfer-dbets": "node ./run/approve-and-transfer-dbets",
+    "create-market": "node ./run/create-market",
+    "place-order": "node ./run/place-order",
+    "view-order-book": "node ./run/view-order-book",
+    "fill-order": "node ./run/fill-order",
+    "resolve-market": "node ./run/resolve-market",
+    "claim-outcome-share-tokens": "node ./run/claim-outcome-share-tokens"
+  },
+  "author": "dev <dev@decent.bet>",
+  "license": "MIT",
+  "dependencies": {
+    "0x.js": "^2.0.8",
+    "@0x/connect": "^3.0.10",
+    "@0x/order-utils": "^3.0.7",
+    "@0x/subproviders": "^2.1.8",
+    "@0x/web3-wrapper": "^3.2.1",
+    "dotenv": "^6.2.0",
+    "thorify": "^1.0.4",
+    "truffle-hdwallet-provider": "^1.0.2",
+    "web3": "^1.0.0-beta.37",
+    "yargs": "^12.0.5"
+  }
+}

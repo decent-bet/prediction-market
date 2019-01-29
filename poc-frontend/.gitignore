@@ -1,0 +1,13 @@
+# dependencies
+.idea/
+node_modules
+build
+
+# testing
+coverage
+
+# misc
+.DS_Store
+.env
+npm-debug.log
+yarn-error.log

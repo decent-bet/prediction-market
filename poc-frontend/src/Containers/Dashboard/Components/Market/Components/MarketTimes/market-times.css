@@ -1,0 +1,23 @@
+.view-market .market-times {
+    padding-left: 20px;
+}
+
+.view-market .market-times p {
+    font-weight: 300;
+    font-size: 1em;
+    margin-bottom: 5px;
+}
+
+.view-market .market-times .title {
+    font-weight: 500;
+    color: #ffce00;
+    margin-bottom: 5px;
+}
+
+.view-market .market-times .value {
+    margin-bottom: 10px;
+}
+
+.view-market .market-times h3 {
+    margin-bottom: 20px;
+}

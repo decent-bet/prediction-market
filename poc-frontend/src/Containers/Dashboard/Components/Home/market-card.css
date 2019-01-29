@@ -1,0 +1,16 @@
+.dashboard-home .market-card h3,
+.dashboard-home .market-card h4 {
+    font-weight: 300;
+    color: #ffce00;
+}
+
+.dashboard-home .market-card p {
+    margin-bottom: 12px;
+}
+
+.dashboard-home .market-card .time-header {
+}
+
+.dashboard-home .market-card .time {
+    font-size: 1em;
+}

@@ -1,0 +1,37 @@
+.view-market .market-trade-tab {
+    margin-top: 30px;
+    padding: 10px;
+}
+
+.view-market .market-trade-tab .title {
+    text-transform: uppercase;
+    font-size: 1.1em;
+}
+
+.view-market .market-trade-tab .value {
+    font-weight: 300;
+    font-size: 1.1em;
+}
+
+.view-market .market-trade-tab .divider {
+    margin-top: 40px;
+}
+
+.view-market .market-trade-tab .est-cost {
+    margin-top: 40px;
+}
+
+.view-market .market-trade-tab .insufficient-allowances {
+    background-color: #ff1a3a;
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px
+}
+
+.view-market .market-trade-tab .insufficient-allowances p {
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 0.8em;
+    margin-bottom: 0;
+}
