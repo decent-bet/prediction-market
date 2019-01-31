@@ -1,0 +1,1941 @@
+{
+  "contractName": "LibFillResults",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a72305820fe1d737be2928562f2a04fdc4655f120b4dcf054bc0dde58fb7ab591cfdc14ff0029",
+  "deployedBytecode": "0x6080604052600080fdfea165627a7a72305820fe1d737be2928562f2a04fdc4655f120b4dcf054bc0dde58fb7ab591cfdc14ff0029",
+  "sourceMap": "653:1767:32:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;653:1767:32;;;;;;;",
+  "deployedSourceMap": "653:1767:32:-;;;;;",
+  "source": "/*\n\n  Copyright 2018 ZeroEx Intl.\n\n  Licensed under the Apache License, Version 2.0 (the \"License\");\n  you may not use this file except in compliance with the License.\n  You may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\n  Unless required by applicable law or agreed to in writing, software\n  distributed under the License is distributed on an \"AS IS\" BASIS,\n  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  See the License for the specific language governing permissions and\n  limitations under the License.\n\n*/\n\npragma solidity 0.5.0;\n\nimport \"../../../utils/SafeMath/SafeMath.sol\";\n\n\ncontract LibFillResults is\n    SafeMath\n{\n    struct FillResults {\n        uint256 makerAssetFilledAmount;  // Total amount of makerAsset(s) filled.\n        uint256 takerAssetFilledAmount;  // Total amount of takerAsset(s) filled.\n        uint256 makerFeePaid;            // Total amount of ZRX paid by maker(s) to feeRecipient(s).\n        uint256 takerFeePaid;            // Total amount of ZRX paid by taker to feeRecipients(s).\n    }\n\n    struct MatchedFillResults {\n        FillResults left;                    // Amounts filled and fees paid of left order.\n        FillResults right;                   // Amounts filled and fees paid of right order.\n        uint256 leftMakerAssetSpreadAmount;  // Spread between price of left and right order, denominated in the left order's makerAsset, paid to taker.\n    }\n\n    /// @dev Adds properties of both FillResults instances.\n    ///      Modifies the first FillResults instance specified.\n    /// @param totalFillResults Fill results instance that will be added onto.\n    /// @param singleFillResults Fill results instance that will be added to totalFillResults.\n    function addFillResults(FillResults memory totalFillResults, FillResults memory singleFillResults)\n        internal\n        pure\n    {\n        totalFillResults.makerAssetFilledAmount = safeAdd(totalFillResults.makerAssetFilledAmount, singleFillResults.makerAssetFilledAmount);\n        totalFillResults.takerAssetFilledAmount = safeAdd(totalFillResults.takerAssetFilledAmount, singleFillResults.takerAssetFilledAmount);\n        totalFillResults.makerFeePaid = safeAdd(totalFillResults.makerFeePaid, singleFillResults.makerFeePaid);\n        totalFillResults.takerFeePaid = safeAdd(totalFillResults.takerFeePaid, singleFillResults.takerFeePaid);\n    }\n}\n",
+  "sourcePath": "/home/rogelio/Code/dbet/prediction-market/core/contracts/0x/protocol/Exchange/libs/LibFillResults.sol",
+  "ast": {
+    "absolutePath": "/home/rogelio/Code/dbet/prediction-market/core/contracts/0x/protocol/Exchange/libs/LibFillResults.sol",
+    "exportedSymbols": {
+      "LibFillResults": [
+        5162
+      ]
+    },
+    "id": 5163,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 5090,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "580:22:32"
+      },
+      {
+        "absolutePath": "/home/rogelio/Code/dbet/prediction-market/core/contracts/0x/utils/SafeMath/SafeMath.sol",
+        "file": "../../../utils/SafeMath/SafeMath.sol",
+        "id": 5091,
+        "nodeType": "ImportDirective",
+        "scope": 5163,
+        "sourceUnit": 6579,
+        "src": "604:46:32",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 5092,
+              "name": "SafeMath",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6578,
+              "src": "684:8:32",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_SafeMath_$6578",
+                "typeString": "contract SafeMath"
+              }
+            },
+            "id": 5093,
+            "nodeType": "InheritanceSpecifier",
+            "src": "684:8:32"
+          }
+        ],
+        "contractDependencies": [
+          6578
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 5162,
+        "linearizedBaseContracts": [
+          5162,
+          6578
+        ],
+        "name": "LibFillResults",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "LibFillResults.FillResults",
+            "id": 5102,
+            "members": [
+              {
+                "constant": false,
+                "id": 5095,
+                "name": "makerAssetFilledAmount",
+                "nodeType": "VariableDeclaration",
+                "scope": 5102,
+                "src": "728:30:32",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 5094,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "728:7:32",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5097,
+                "name": "takerAssetFilledAmount",
+                "nodeType": "VariableDeclaration",
+                "scope": 5102,
+                "src": "810:30:32",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 5096,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "810:7:32",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5099,
+                "name": "makerFeePaid",
+                "nodeType": "VariableDeclaration",
+                "scope": 5102,
+                "src": "892:20:32",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 5098,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "892:7:32",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5101,
+                "name": "takerFeePaid",
+                "nodeType": "VariableDeclaration",
+                "scope": 5102,
+                "src": "993:20:32",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 5100,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "993:7:32",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "FillResults",
+            "nodeType": "StructDefinition",
+            "scope": 5162,
+            "src": "699:390:32",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "LibFillResults.MatchedFillResults",
+            "id": 5109,
+            "members": [
+              {
+                "constant": false,
+                "id": 5104,
+                "name": "left",
+                "nodeType": "VariableDeclaration",
+                "scope": 5109,
+                "src": "1131:16:32",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_FillResults_$5102_storage_ptr",
+                  "typeString": "struct LibFillResults.FillResults"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 5103,
+                  "name": "FillResults",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 5102,
+                  "src": "1131:11:32",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_FillResults_$5102_storage_ptr",
+                    "typeString": "struct LibFillResults.FillResults"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5106,
+                "name": "right",
+                "nodeType": "VariableDeclaration",
+                "scope": 5109,
+                "src": "1223:17:32",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_FillResults_$5102_storage_ptr",
+                  "typeString": "struct LibFillResults.FillResults"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 5105,
+                  "name": "FillResults",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 5102,
+                  "src": "1223:11:32",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_FillResults_$5102_storage_ptr",
+                    "typeString": "struct LibFillResults.FillResults"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5108,
+                "name": "leftMakerAssetSpreadAmount",
+                "nodeType": "VariableDeclaration",
+                "scope": 5109,
+                "src": "1316:34:32",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 5107,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1316:7:32",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "MatchedFillResults",
+            "nodeType": "StructDefinition",
+            "scope": 5162,
+            "src": "1095:371:32",
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 5160,
+              "nodeType": "Block",
+              "src": "1903:515:32",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 5125,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 5116,
+                        "name": "totalFillResults",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5111,
+                        "src": "1913:16:32",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                          "typeString": "struct LibFillResults.FillResults memory"
+                        }
+                      },
+                      "id": 5118,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "makerAssetFilledAmount",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 5095,
+                      "src": "1913:39:32",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 5120,
+                            "name": "totalFillResults",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5111,
+                            "src": "1963:16:32",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                              "typeString": "struct LibFillResults.FillResults memory"
+                            }
+                          },
+                          "id": 5121,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "makerAssetFilledAmount",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 5095,
+                          "src": "1963:39:32",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 5122,
+                            "name": "singleFillResults",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5113,
+                            "src": "2004:17:32",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                              "typeString": "struct LibFillResults.FillResults memory"
+                            }
+                          },
+                          "id": 5123,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "makerAssetFilledAmount",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 5095,
+                          "src": "2004:40:32",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 5119,
+                        "name": "safeAdd",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6509,
+                        "src": "1955:7:32",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
+                          "typeString": "function (uint256,uint256) pure returns (uint256)"
+                        }
+                      },
+                      "id": 5124,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1955:90:32",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1913:132:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 5126,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1913:132:32"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 5136,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 5127,
+                        "name": "totalFillResults",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5111,
+                        "src": "2055:16:32",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                          "typeString": "struct LibFillResults.FillResults memory"
+                        }
+                      },
+                      "id": 5129,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "takerAssetFilledAmount",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 5097,
+                      "src": "2055:39:32",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 5131,
+                            "name": "totalFillResults",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5111,
+                            "src": "2105:16:32",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                              "typeString": "struct LibFillResults.FillResults memory"
+                            }
+                          },
+                          "id": 5132,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "takerAssetFilledAmount",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 5097,
+                          "src": "2105:39:32",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 5133,
+                            "name": "singleFillResults",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5113,
+                            "src": "2146:17:32",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                              "typeString": "struct LibFillResults.FillResults memory"
+                            }
+                          },
+                          "id": 5134,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "takerAssetFilledAmount",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 5097,
+                          "src": "2146:40:32",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 5130,
+                        "name": "safeAdd",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6509,
+                        "src": "2097:7:32",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
+                          "typeString": "function (uint256,uint256) pure returns (uint256)"
+                        }
+                      },
+                      "id": 5135,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "2097:90:32",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "2055:132:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 5137,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2055:132:32"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 5147,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 5138,
+                        "name": "totalFillResults",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5111,
+                        "src": "2197:16:32",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                          "typeString": "struct LibFillResults.FillResults memory"
+                        }
+                      },
+                      "id": 5140,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "makerFeePaid",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 5099,
+                      "src": "2197:29:32",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 5142,
+                            "name": "totalFillResults",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5111,
+                            "src": "2237:16:32",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                              "typeString": "struct LibFillResults.FillResults memory"
+                            }
+                          },
+                          "id": 5143,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "makerFeePaid",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 5099,
+                          "src": "2237:29:32",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 5144,
+                            "name": "singleFillResults",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5113,
+                            "src": "2268:17:32",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                              "typeString": "struct LibFillResults.FillResults memory"
+                            }
+                          },
+                          "id": 5145,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "makerFeePaid",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 5099,
+                          "src": "2268:30:32",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 5141,
+                        "name": "safeAdd",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6509,
+                        "src": "2229:7:32",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
+                          "typeString": "function (uint256,uint256) pure returns (uint256)"
+                        }
+                      },
+                      "id": 5146,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "2229:70:32",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "2197:102:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 5148,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2197:102:32"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 5158,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 5149,
+                        "name": "totalFillResults",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5111,
+                        "src": "2309:16:32",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                          "typeString": "struct LibFillResults.FillResults memory"
+                        }
+                      },
+                      "id": 5151,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "takerFeePaid",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 5101,
+                      "src": "2309:29:32",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 5153,
+                            "name": "totalFillResults",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5111,
+                            "src": "2349:16:32",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                              "typeString": "struct LibFillResults.FillResults memory"
+                            }
+                          },
+                          "id": 5154,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "takerFeePaid",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 5101,
+                          "src": "2349:29:32",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 5155,
+                            "name": "singleFillResults",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5113,
+                            "src": "2380:17:32",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                              "typeString": "struct LibFillResults.FillResults memory"
+                            }
+                          },
+                          "id": 5156,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "takerFeePaid",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 5101,
+                          "src": "2380:30:32",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 5152,
+                        "name": "safeAdd",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6509,
+                        "src": "2341:7:32",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
+                          "typeString": "function (uint256,uint256) pure returns (uint256)"
+                        }
+                      },
+                      "id": 5157,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "2341:70:32",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "2309:102:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 5159,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2309:102:32"
+                }
+              ]
+            },
+            "documentation": "@dev Adds properties of both FillResults instances.\n      Modifies the first FillResults instance specified.\n @param totalFillResults Fill results instance that will be added onto.\n @param singleFillResults Fill results instance that will be added to totalFillResults.",
+            "id": 5161,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addFillResults",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5114,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5111,
+                  "name": "totalFillResults",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5161,
+                  "src": "1794:35:32",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                    "typeString": "struct LibFillResults.FillResults"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 5110,
+                    "name": "FillResults",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 5102,
+                    "src": "1794:11:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_FillResults_$5102_storage_ptr",
+                      "typeString": "struct LibFillResults.FillResults"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5113,
+                  "name": "singleFillResults",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5161,
+                  "src": "1831:36:32",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                    "typeString": "struct LibFillResults.FillResults"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 5112,
+                    "name": "FillResults",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 5102,
+                    "src": "1831:11:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_FillResults_$5102_storage_ptr",
+                      "typeString": "struct LibFillResults.FillResults"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1793:75:32"
+            },
+            "returnParameters": {
+              "id": 5115,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1903:0:32"
+            },
+            "scope": 5162,
+            "src": "1770:648:32",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 5163,
+        "src": "653:1767:32"
+      }
+    ],
+    "src": "580:1841:32"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/rogelio/Code/dbet/prediction-market/core/contracts/0x/protocol/Exchange/libs/LibFillResults.sol",
+    "exportedSymbols": {
+      "LibFillResults": [
+        5162
+      ]
+    },
+    "id": 5163,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 5090,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "580:22:32"
+      },
+      {
+        "absolutePath": "/home/rogelio/Code/dbet/prediction-market/core/contracts/0x/utils/SafeMath/SafeMath.sol",
+        "file": "../../../utils/SafeMath/SafeMath.sol",
+        "id": 5091,
+        "nodeType": "ImportDirective",
+        "scope": 5163,
+        "sourceUnit": 6579,
+        "src": "604:46:32",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 5092,
+              "name": "SafeMath",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6578,
+              "src": "684:8:32",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_SafeMath_$6578",
+                "typeString": "contract SafeMath"
+              }
+            },
+            "id": 5093,
+            "nodeType": "InheritanceSpecifier",
+            "src": "684:8:32"
+          }
+        ],
+        "contractDependencies": [
+          6578
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 5162,
+        "linearizedBaseContracts": [
+          5162,
+          6578
+        ],
+        "name": "LibFillResults",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "LibFillResults.FillResults",
+            "id": 5102,
+            "members": [
+              {
+                "constant": false,
+                "id": 5095,
+                "name": "makerAssetFilledAmount",
+                "nodeType": "VariableDeclaration",
+                "scope": 5102,
+                "src": "728:30:32",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 5094,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "728:7:32",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5097,
+                "name": "takerAssetFilledAmount",
+                "nodeType": "VariableDeclaration",
+                "scope": 5102,
+                "src": "810:30:32",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 5096,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "810:7:32",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5099,
+                "name": "makerFeePaid",
+                "nodeType": "VariableDeclaration",
+                "scope": 5102,
+                "src": "892:20:32",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 5098,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "892:7:32",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5101,
+                "name": "takerFeePaid",
+                "nodeType": "VariableDeclaration",
+                "scope": 5102,
+                "src": "993:20:32",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 5100,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "993:7:32",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "FillResults",
+            "nodeType": "StructDefinition",
+            "scope": 5162,
+            "src": "699:390:32",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "LibFillResults.MatchedFillResults",
+            "id": 5109,
+            "members": [
+              {
+                "constant": false,
+                "id": 5104,
+                "name": "left",
+                "nodeType": "VariableDeclaration",
+                "scope": 5109,
+                "src": "1131:16:32",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_FillResults_$5102_storage_ptr",
+                  "typeString": "struct LibFillResults.FillResults"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 5103,
+                  "name": "FillResults",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 5102,
+                  "src": "1131:11:32",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_FillResults_$5102_storage_ptr",
+                    "typeString": "struct LibFillResults.FillResults"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5106,
+                "name": "right",
+                "nodeType": "VariableDeclaration",
+                "scope": 5109,
+                "src": "1223:17:32",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_FillResults_$5102_storage_ptr",
+                  "typeString": "struct LibFillResults.FillResults"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 5105,
+                  "name": "FillResults",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 5102,
+                  "src": "1223:11:32",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_FillResults_$5102_storage_ptr",
+                    "typeString": "struct LibFillResults.FillResults"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 5108,
+                "name": "leftMakerAssetSpreadAmount",
+                "nodeType": "VariableDeclaration",
+                "scope": 5109,
+                "src": "1316:34:32",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 5107,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1316:7:32",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "MatchedFillResults",
+            "nodeType": "StructDefinition",
+            "scope": 5162,
+            "src": "1095:371:32",
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 5160,
+              "nodeType": "Block",
+              "src": "1903:515:32",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 5125,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 5116,
+                        "name": "totalFillResults",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5111,
+                        "src": "1913:16:32",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                          "typeString": "struct LibFillResults.FillResults memory"
+                        }
+                      },
+                      "id": 5118,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "makerAssetFilledAmount",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 5095,
+                      "src": "1913:39:32",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 5120,
+                            "name": "totalFillResults",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5111,
+                            "src": "1963:16:32",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                              "typeString": "struct LibFillResults.FillResults memory"
+                            }
+                          },
+                          "id": 5121,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "makerAssetFilledAmount",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 5095,
+                          "src": "1963:39:32",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 5122,
+                            "name": "singleFillResults",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5113,
+                            "src": "2004:17:32",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                              "typeString": "struct LibFillResults.FillResults memory"
+                            }
+                          },
+                          "id": 5123,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "makerAssetFilledAmount",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 5095,
+                          "src": "2004:40:32",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 5119,
+                        "name": "safeAdd",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6509,
+                        "src": "1955:7:32",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
+                          "typeString": "function (uint256,uint256) pure returns (uint256)"
+                        }
+                      },
+                      "id": 5124,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1955:90:32",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1913:132:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 5126,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1913:132:32"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 5136,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 5127,
+                        "name": "totalFillResults",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5111,
+                        "src": "2055:16:32",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                          "typeString": "struct LibFillResults.FillResults memory"
+                        }
+                      },
+                      "id": 5129,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "takerAssetFilledAmount",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 5097,
+                      "src": "2055:39:32",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 5131,
+                            "name": "totalFillResults",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5111,
+                            "src": "2105:16:32",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                              "typeString": "struct LibFillResults.FillResults memory"
+                            }
+                          },
+                          "id": 5132,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "takerAssetFilledAmount",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 5097,
+                          "src": "2105:39:32",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 5133,
+                            "name": "singleFillResults",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5113,
+                            "src": "2146:17:32",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                              "typeString": "struct LibFillResults.FillResults memory"
+                            }
+                          },
+                          "id": 5134,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "takerAssetFilledAmount",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 5097,
+                          "src": "2146:40:32",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 5130,
+                        "name": "safeAdd",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6509,
+                        "src": "2097:7:32",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
+                          "typeString": "function (uint256,uint256) pure returns (uint256)"
+                        }
+                      },
+                      "id": 5135,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "2097:90:32",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "2055:132:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 5137,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2055:132:32"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 5147,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 5138,
+                        "name": "totalFillResults",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5111,
+                        "src": "2197:16:32",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                          "typeString": "struct LibFillResults.FillResults memory"
+                        }
+                      },
+                      "id": 5140,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "makerFeePaid",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 5099,
+                      "src": "2197:29:32",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 5142,
+                            "name": "totalFillResults",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5111,
+                            "src": "2237:16:32",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                              "typeString": "struct LibFillResults.FillResults memory"
+                            }
+                          },
+                          "id": 5143,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "makerFeePaid",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 5099,
+                          "src": "2237:29:32",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 5144,
+                            "name": "singleFillResults",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5113,
+                            "src": "2268:17:32",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                              "typeString": "struct LibFillResults.FillResults memory"
+                            }
+                          },
+                          "id": 5145,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "makerFeePaid",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 5099,
+                          "src": "2268:30:32",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 5141,
+                        "name": "safeAdd",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6509,
+                        "src": "2229:7:32",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
+                          "typeString": "function (uint256,uint256) pure returns (uint256)"
+                        }
+                      },
+                      "id": 5146,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "2229:70:32",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "2197:102:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 5148,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2197:102:32"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 5158,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 5149,
+                        "name": "totalFillResults",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5111,
+                        "src": "2309:16:32",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                          "typeString": "struct LibFillResults.FillResults memory"
+                        }
+                      },
+                      "id": 5151,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "takerFeePaid",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 5101,
+                      "src": "2309:29:32",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 5153,
+                            "name": "totalFillResults",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5111,
+                            "src": "2349:16:32",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                              "typeString": "struct LibFillResults.FillResults memory"
+                            }
+                          },
+                          "id": 5154,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "takerFeePaid",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 5101,
+                          "src": "2349:29:32",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 5155,
+                            "name": "singleFillResults",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 5113,
+                            "src": "2380:17:32",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                              "typeString": "struct LibFillResults.FillResults memory"
+                            }
+                          },
+                          "id": 5156,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "takerFeePaid",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 5101,
+                          "src": "2380:30:32",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 5152,
+                        "name": "safeAdd",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6509,
+                        "src": "2341:7:32",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
+                          "typeString": "function (uint256,uint256) pure returns (uint256)"
+                        }
+                      },
+                      "id": 5157,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "2341:70:32",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "2309:102:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 5159,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2309:102:32"
+                }
+              ]
+            },
+            "documentation": "@dev Adds properties of both FillResults instances.\n      Modifies the first FillResults instance specified.\n @param totalFillResults Fill results instance that will be added onto.\n @param singleFillResults Fill results instance that will be added to totalFillResults.",
+            "id": 5161,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addFillResults",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5114,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5111,
+                  "name": "totalFillResults",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5161,
+                  "src": "1794:35:32",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                    "typeString": "struct LibFillResults.FillResults"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 5110,
+                    "name": "FillResults",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 5102,
+                    "src": "1794:11:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_FillResults_$5102_storage_ptr",
+                      "typeString": "struct LibFillResults.FillResults"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5113,
+                  "name": "singleFillResults",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5161,
+                  "src": "1831:36:32",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_FillResults_$5102_memory_ptr",
+                    "typeString": "struct LibFillResults.FillResults"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 5112,
+                    "name": "FillResults",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 5102,
+                    "src": "1831:11:32",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_FillResults_$5102_storage_ptr",
+                      "typeString": "struct LibFillResults.FillResults"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1793:75:32"
+            },
+            "returnParameters": {
+              "id": 5115,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1903:0:32"
+            },
+            "scope": 5162,
+            "src": "1770:648:32",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 5163,
+        "src": "653:1767:32"
+      }
+    ],
+    "src": "580:1841:32"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.1",
+  "updatedAt": "2019-01-31T19:07:12.921Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

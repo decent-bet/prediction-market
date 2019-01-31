@@ -1,0 +1,803 @@
+{
+  "contractName": "LibMarket",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a723058205b74750e3415f3d8e3cba8db428c005b52a4d24df4f47d63653bc7d05bfa712b0029",
+  "deployedBytecode": "0x6080604052600080fdfea165627a7a723058205b74750e3415f3d8e3cba8db428c005b52a4d24df4f47d63653bc7d05bfa712b0029",
+  "sourceMap": "24:865:52:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;24:865:52;;;;;;;",
+  "deployedSourceMap": "24:865:52:-;;;;;",
+  "source": "pragma solidity 0.5.0;\n\ncontract LibMarket {\n\n    enum MarketType {\n        ONE_SIDED,\n        P2P\n    }\n\n    struct EventMarket {\n        // Type of market\n        MarketType marketType;\n        // Category ID\n        uint256 categoryId;\n        // Event start time\n        uint256 eventStart;\n        // Market open time\n        uint256 marketOpen;\n        // Market close time\n        uint256 marketClose;\n        // Possible outcomes\n        bytes32[] outcomes;\n        // Address of ERC20 outcome share tokens corresponding to each outcome\n        mapping (bytes32 => address) outcomeShareTokens;\n        // Minimum possible bet amount in DBETs\n        uint256 minBet;\n        // Maximum possible bet amount in DBETs\n        uint256 maxBet;\n        // IPFS hash containing all market details\n        string ipfsHash;\n        // Winning outcome\n        bytes32 winningOutcome;\n    }\n\n}\n",
+  "sourcePath": "/home/rogelio/Code/dbet/prediction-market/core/contracts/protocol/libs/LibMarket.sol",
+  "ast": {
+    "absolutePath": "/home/rogelio/Code/dbet/prediction-market/core/contracts/protocol/libs/LibMarket.sol",
+    "exportedSymbols": {
+      "LibMarket": [
+        8781
+      ]
+    },
+    "id": 8782,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 8751,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:52"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 8781,
+        "linearizedBaseContracts": [
+          8781
+        ],
+        "name": "LibMarket",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "LibMarket.MarketType",
+            "id": 8754,
+            "members": [
+              {
+                "id": 8752,
+                "name": "ONE_SIDED",
+                "nodeType": "EnumValue",
+                "src": "76:9:52"
+              },
+              {
+                "id": 8753,
+                "name": "P2P",
+                "nodeType": "EnumValue",
+                "src": "95:3:52"
+              }
+            ],
+            "name": "MarketType",
+            "nodeType": "EnumDefinition",
+            "src": "50:54:52"
+          },
+          {
+            "canonicalName": "LibMarket.EventMarket",
+            "id": 8780,
+            "members": [
+              {
+                "constant": false,
+                "id": 8756,
+                "name": "marketType",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "165:21:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_MarketType_$8754",
+                  "typeString": "enum LibMarket.MarketType"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 8755,
+                  "name": "MarketType",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 8754,
+                  "src": "165:10:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_MarketType_$8754",
+                    "typeString": "enum LibMarket.MarketType"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8758,
+                "name": "categoryId",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "219:18:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 8757,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "219:7:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8760,
+                "name": "eventStart",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "275:18:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 8759,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "275:7:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8762,
+                "name": "marketOpen",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "331:18:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 8761,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "331:7:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8764,
+                "name": "marketClose",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "388:19:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 8763,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "388:7:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8767,
+                "name": "outcomes",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "446:18:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                  "typeString": "bytes32[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 8765,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "446:7:52",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "id": 8766,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "446:9:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                    "typeString": "bytes32[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8771,
+                "name": "outcomeShareTokens",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "553:47:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                  "typeString": "mapping(bytes32 => address)"
+                },
+                "typeName": {
+                  "id": 8770,
+                  "keyType": {
+                    "id": 8768,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "562:7:52",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "553:28:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                    "typeString": "mapping(bytes32 => address)"
+                  },
+                  "valueType": {
+                    "id": 8769,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "573:7:52",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8773,
+                "name": "minBet",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "658:14:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 8772,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "658:7:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8775,
+                "name": "maxBet",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "730:14:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 8774,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "730:7:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8777,
+                "name": "ipfsHash",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "805:15:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 8776,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "805:6:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8779,
+                "name": "winningOutcome",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "857:22:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 8778,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "857:7:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "EventMarket",
+            "nodeType": "StructDefinition",
+            "scope": 8781,
+            "src": "110:776:52",
+            "visibility": "public"
+          }
+        ],
+        "scope": 8782,
+        "src": "24:865:52"
+      }
+    ],
+    "src": "0:890:52"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/rogelio/Code/dbet/prediction-market/core/contracts/protocol/libs/LibMarket.sol",
+    "exportedSymbols": {
+      "LibMarket": [
+        8781
+      ]
+    },
+    "id": 8782,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 8751,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:52"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 8781,
+        "linearizedBaseContracts": [
+          8781
+        ],
+        "name": "LibMarket",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "LibMarket.MarketType",
+            "id": 8754,
+            "members": [
+              {
+                "id": 8752,
+                "name": "ONE_SIDED",
+                "nodeType": "EnumValue",
+                "src": "76:9:52"
+              },
+              {
+                "id": 8753,
+                "name": "P2P",
+                "nodeType": "EnumValue",
+                "src": "95:3:52"
+              }
+            ],
+            "name": "MarketType",
+            "nodeType": "EnumDefinition",
+            "src": "50:54:52"
+          },
+          {
+            "canonicalName": "LibMarket.EventMarket",
+            "id": 8780,
+            "members": [
+              {
+                "constant": false,
+                "id": 8756,
+                "name": "marketType",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "165:21:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_MarketType_$8754",
+                  "typeString": "enum LibMarket.MarketType"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 8755,
+                  "name": "MarketType",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 8754,
+                  "src": "165:10:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_MarketType_$8754",
+                    "typeString": "enum LibMarket.MarketType"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8758,
+                "name": "categoryId",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "219:18:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 8757,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "219:7:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8760,
+                "name": "eventStart",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "275:18:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 8759,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "275:7:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8762,
+                "name": "marketOpen",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "331:18:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 8761,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "331:7:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8764,
+                "name": "marketClose",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "388:19:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 8763,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "388:7:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8767,
+                "name": "outcomes",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "446:18:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                  "typeString": "bytes32[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 8765,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "446:7:52",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "id": 8766,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "446:9:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_bytes32_$dyn_storage_ptr",
+                    "typeString": "bytes32[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8771,
+                "name": "outcomeShareTokens",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "553:47:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                  "typeString": "mapping(bytes32 => address)"
+                },
+                "typeName": {
+                  "id": 8770,
+                  "keyType": {
+                    "id": 8768,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "562:7:52",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "553:28:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                    "typeString": "mapping(bytes32 => address)"
+                  },
+                  "valueType": {
+                    "id": 8769,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "573:7:52",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8773,
+                "name": "minBet",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "658:14:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 8772,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "658:7:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8775,
+                "name": "maxBet",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "730:14:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 8774,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "730:7:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8777,
+                "name": "ipfsHash",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "805:15:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 8776,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "805:6:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 8779,
+                "name": "winningOutcome",
+                "nodeType": "VariableDeclaration",
+                "scope": 8780,
+                "src": "857:22:52",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 8778,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "857:7:52",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "EventMarket",
+            "nodeType": "StructDefinition",
+            "scope": 8781,
+            "src": "110:776:52",
+            "visibility": "public"
+          }
+        ],
+        "scope": 8782,
+        "src": "24:865:52"
+      }
+    ],
+    "src": "0:890:52"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.1",
+  "updatedAt": "2019-01-31T19:07:12.945Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

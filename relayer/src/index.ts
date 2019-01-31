@@ -33,7 +33,7 @@ const ordersByHash: { [hash: string]: SignedOrder } = {};
 
 // Returns the contract address deployed on the connected network for a given contract name
 function getContractAddress(name: string): string {
-    return require(`../build/contracts/${name}.json`).networks[NETWORK_CONFIGS.networkId].address.toLowerCase();
+    return require(`../build/contracts/${name}.json`).chain_tags['0xc7'].address.toLowerCase();
 }
 
 const contractWrappers = new ContractWrappers(providerEngine, {
