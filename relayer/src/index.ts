@@ -8,6 +8,7 @@ import {
     orderHashUtils,
     signatureUtils,
     SignedOrder,
+    ContractAddresses,
 } from '0x.js';
 
 import { APIOrder, OrderbookResponse } from '@0x/connect';
@@ -36,19 +37,37 @@ function getContractAddress(name: string): string {
     return require(`../build/contracts/${name}.json`).networks[NETWORK_CONFIGS.networkId].address.toLowerCase();
 }
 
+// Hardcoded Contract Addresses for the Thor Snapshot.
+// Just change `contractAddressesForTestnet` with `contractAddressesForDemo` in `contractWrappers` to use
+const contractAddressesForDemo: ContractAddresses = {
+    exchange: '0x52a694a3178ada5f66c7ADC9095969D970777e35'.toLocaleLowerCase(),
+    erc20Proxy: '0x13E183e04c33aD35A4c86279a7837115268f4A4F'.toLocaleLowerCase(),
+    erc721Proxy: '0x1d7022f5b17d2f8b695918fb48fa1089c9f85401',
+    zrxToken: '0xB0C7E1834642D94051DEC8B6d311f886E3553DAf'.toLocaleLowerCase(),
+    etherToken: '0xB0C7E1834642D94051DEC8B6d311f886E3553DAf'.toLocaleLowerCase(),
+    assetProxyOwner: '0xd71Ca9537399c29C6784a51e5b5eBd5e0C9Bf248'.toLocaleLowerCase(),
+    forwarder: '0xb69e673309512a9d726f87304c6984054f87a93b',
+    orderValidator: '0xe86bb98fcf9bff3512c74589b78fb168200cc546',
+    dutchAuction: '0x0',
+};
+const contractAddressesForTestnet: ContractAddresses = {
+    exchange: getContractAddress('Exchange'),
+    erc20Proxy: getContractAddress('ERC20Proxy'),
+    erc721Proxy: '0x1d7022f5b17d2f8b695918fb48fa1089c9f85401',
+    zrxToken: getContractAddress('DBETVETToken'),
+    etherToken: getContractAddress('DBETVETToken'),
+    assetProxyOwner: getContractAddress('AssetProxyOwner'),
+    forwarder: '0xb69e673309512a9d726f87304c6984054f87a93b',
+    orderValidator: '0xe86bb98fcf9bff3512c74589b78fb168200cc546',
+    dutchAuction: '0x0',
+};
+
+// Build the Contract Wrappers
 const contractWrappers = new ContractWrappers(providerEngine, {
     networkId: NETWORK_CONFIGS.networkId,
-    contractAddresses: {
-        exchange: getContractAddress('Exchange'),
-        erc20Proxy: getContractAddress('ERC20Proxy'),
-        erc721Proxy: '0x1d7022f5b17d2f8b695918fb48fa1089c9f85401',
-        zrxToken: getContractAddress('DBETVETToken'),
-        etherToken: getContractAddress('DBETVETToken'),
-        assetProxyOwner: getContractAddress('AssetProxyOwner'),
-        forwarder: '0xb69e673309512a9d726f87304c6984054f87a93b',
-        orderValidator: '0xe86bb98fcf9bff3512c74589b78fb168200cc546',
-    }
+    contractAddresses: contractAddressesForTestnet,
 });
+
 // We subscribe to the Exchange Events to remove any filled or cancelled orders
 contractWrappers.exchange.subscribe(
     ExchangeEvents.Fill,
