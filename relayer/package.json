@@ -7,7 +7,7 @@
     "watch": "cross-env tsc -w",
     "build": "cross-env tsc",
     "clean": "shx rm -rf lib",
-    "relayer_server": "cross-env yarn build && node ./lib/index.js"
+    "relayer_server": "cross-env npm run build && node ./lib/index.js"
   },
   "author": "dev <dev@decent.bet>",
   "license": "MIT",

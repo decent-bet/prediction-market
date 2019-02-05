@@ -33,12 +33,13 @@ const ordersByHash: { [hash: string]: SignedOrder } = {};
 
 // Returns the contract address deployed on the connected network for a given contract name
 function getContractAddress(name: string): string {
-    return require(`../build/contracts/${name}.json`).chain_tags['0xc7'].address.toLowerCase();
+    return require(`../build/contracts/${name}.json`).chain_tags['0x4a'].address.toLowerCase();
 }
 
 const contractWrappers = new ContractWrappers(providerEngine, {
     networkId: NETWORK_CONFIGS.networkId,
     contractAddresses: {
+        dutchAuction: '',
         exchange: getContractAddress('Exchange'),
         erc20Proxy: getContractAddress('ERC20Proxy'),
         erc721Proxy: '0x1d7022f5b17d2f8b695918fb48fa1089c9f85401',
