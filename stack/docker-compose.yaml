@@ -1,0 +1,25 @@
+version: '3'
+services:
+    ipfs:
+        image: ipfs/go-ipfs:latest
+        container_name: 'ipfs-prediction-market'
+        hostname: ipfs_prediction_market
+        volumes:
+            - './data/export:/export'
+            - './data/ipfs:/data/ipfs'
+        ports:
+            - '5001:5001'
+            - '4001:4001'
+            - '8080:8080'
+    thor:
+        build:
+            context: ./seeded_thor
+        container_name: 'thor-prediction-market'
+        ports:
+            - '127.0.0.1:8669:8669'
+            - '11235:11235'
+            - '11235:11235/udp'
+        command: solo --persist --api-addr 0.0.0.0:8669 --api-cors "http://localhost:4200"
+        network_mode: host
+        volumes:
+        - ./data/thor:/root/.org.vechain.thor
