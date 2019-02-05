@@ -48,6 +48,7 @@ const contractAddressesForDemo: ContractAddresses = {
     assetProxyOwner: '0xd71Ca9537399c29C6784a51e5b5eBd5e0C9Bf248'.toLocaleLowerCase(),
     forwarder: '0xb69e673309512a9d726f87304c6984054f87a93b',
     orderValidator: '0xe86bb98fcf9bff3512c74589b78fb168200cc546',
+    dutchAuction: '0x0',
 };
 const contractAddressesForTestnet: ContractAddresses = {
     exchange: getContractAddress('Exchange'),
@@ -58,6 +59,7 @@ const contractAddressesForTestnet: ContractAddresses = {
     assetProxyOwner: getContractAddress('AssetProxyOwner'),
     forwarder: '0xb69e673309512a9d726f87304c6984054f87a93b',
     orderValidator: '0xe86bb98fcf9bff3512c74589b78fb168200cc546',
+    dutchAuction: '0x0',
 };
 
 // Build the Contract Wrappers
