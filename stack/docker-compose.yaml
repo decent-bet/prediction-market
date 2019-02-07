@@ -3,10 +3,11 @@ services:
     ipfs:
         image: ipfs/go-ipfs:latest
         container_name: 'ipfs-prediction-market'
+        command: daemon --migrate=true --offline
         hostname: ipfs_prediction_market
         volumes:
-            - './data/export:/export'
-            - './data/ipfs:/data/ipfs'
+            - /export
+            - /data/ipfs
         ports:
             - '5001:5001'
             - '4001:4001'
@@ -22,4 +23,4 @@ services:
         command: solo --persist --api-addr 0.0.0.0:8669 --api-cors "http://localhost:4200"
         network_mode: host
         volumes:
-        - ./data/thor:/root/.org.vechain.thor
+        - /root/.org.vechain.thor
