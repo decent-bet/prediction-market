@@ -34,7 +34,7 @@ const ordersByHash: { [hash: string]: SignedOrder } = {};
 
 // Returns the contract address deployed on the connected network for a given contract name
 function getContractAddress(name: string): string {
-    return require(`../build/contracts/${name}.json`).chain_tags['0x4a'].address.toLowerCase();
+    return require(`../build/contracts/${name}.json`).chain_tags['0xa4'].address.toLowerCase();
 }
 
 // Hardcoded Contract Addresses for the Thor Snapshot.
