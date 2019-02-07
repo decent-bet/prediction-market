@@ -1,3 +1,13 @@
+# Test Stack: the Prediction Market
+
+A thor image seeded with the prediction market contracts. This is designed to be run in a development machine as a `ganache-cli` replacement. Also includes an IPFS instance to test the Market information retrieval.
+
+## TL;DR
+
+1. Clone this repo
+2. `docker-compose up`
+3. Connect via `web3` and `thorify` to `localhost:8669`. Use the listed contract addresses below in your code.
+
 ## Contract Addresses
 
 ```
