@@ -1,8 +1,8 @@
 version: '3'
 services:
     ipfs:
-        image: ipfs/go-ipfs:latest
-        container_name: 'ipfs-prediction-market'
+        build:
+            context: ./ipfs
         command: daemon --migrate=true --offline
         hostname: ipfs_prediction_market
         volumes:
