@@ -6,7 +6,7 @@
 				  "PUT", "GET", "POST"
 			  ],
 			  "Access-Control-Allow-Origin": [
-				  "http://localhost:5001", "http://localhost:4200"
+				  "*"
 			  ]
 		  }
   },
