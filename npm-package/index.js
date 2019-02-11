@@ -4,7 +4,7 @@ module.exports = {
   VERSION: PACKAGE_JSON.version,
 
   DBETVETTokenContract: {
-    raw: require("./build/contracts/DBETVETTokenContract.json"),
+    raw: require("./build/contracts/DBETVETToken.json"),
     address: {
       "0x27": "0x510fCddC9424B1bBb328A574f45BfDdB130e1f03", // Testnet
       "0xc7": "0x1b8EC6C2A45ccA481Da6F243Df0d7A5744aFc1f8", // Mainnet
@@ -13,7 +13,7 @@ module.exports = {
     }
   },
   ExchangeContract: {
-    raw: require("./build/contracts/ExchangeContract.json"),
+    raw: require("./build/contracts/Exchange.json"),
     address: {
       "0x27": "0x55db2feE8A2A039BCA83b014cf0b455a31E77Cda", // Testnet
       "0xc7": "0x55db2feE8A2A039BCA83b014cf0b455a31E77Cda", // Mainnet
@@ -22,7 +22,7 @@ module.exports = {
     }
   },
   MarketContract: {
-    raw: require("./build/contracts/MarketContract.json"),
+    raw: require("./build/contracts/Market.json"),
     address: {
       "0x27": "0x9FD9EaEdCB8621FEc90EE7538B72cde0406396bc", // Testnet
       "0xc7": "0x9FD9EaEdCB8621FEc90EE7538B72cde0406396bc", // Mainnet
@@ -31,7 +31,7 @@ module.exports = {
     }
   },
   BettingExchangeContract: {
-    raw: require("./build/contracts/BettingExchangeContract.json"),
+    raw: require("./build/contracts/BettingExchange.json"),
     address: {
       "0x27": "0x016796874EA2fDE06B70b6a85a3e2c46c6e74563", // Testnet
       "0xc7": "0x016796874EA2fDE06B70b6a85a3e2c46c6e74563", // Mainnet
