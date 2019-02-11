@@ -4,25 +4,28 @@ type ContractWrapper = {
   raw: {
     abi: ContractAbi;
   };
-  /**
-   * Testnet Address
-   */
-  "0x27": string;
 
-  /**
-   * Mainnet Address
-   */
-  "0xc7": string;
+  address: {
+    /**
+     * Testnet Address
+     */
+    "0x27": string;
 
-  /**
-   * Mainnet Address
-   */
-  "0x4a": string;
+    /**
+     * Mainnet Address
+     */
+    "0xc7": string;
 
-  /**
-   * Thor Snapshot Address
-   */
-  "0xa4": string;
+    /**
+     * Mainnet Address
+     */
+    "0x4a": string;
+
+    /**
+     * Thor Snapshot Address
+     */
+    "0xa4": string;
+  };
 };
 
 export declare const DBETVETTokenContract: ContractWrapper;
