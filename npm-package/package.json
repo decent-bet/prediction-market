@@ -8,5 +8,8 @@
     "url": "github.com/decent-bet/prediction-market"
   },
   "author": "Roberto E. Zubieta <roberto@decent.bet>",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "dependencies": {
+    "ethereum-protocol": "^1.0.1"
+  }
 }
