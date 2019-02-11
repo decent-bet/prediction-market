@@ -1,6 +1,6 @@
 {
   "name": "@decent-bet/contract-p2p",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Packaged contracts for public NPM",
   "main": "index.js",
   "repository": {
@@ -9,6 +9,14 @@
   },
   "author": "Roberto E. Zubieta <roberto@decent.bet>",
   "license": "GPL-3.0",
+  "keywords": [
+    "vechain",
+    "solidity",
+    "token",
+    "0x",
+    "ERC20",
+    "ERC721"
+  ],
   "dependencies": {
     "ethereum-protocol": "^1.0.1"
   }
