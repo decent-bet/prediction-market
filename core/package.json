@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "dev <dev@decent.bet>",
-  "license": "MIT",
+  "license": "GPL-3.0",
   "scripts": {
     "compile": "node ./lib/compile",
     "migrate": "node ./lib/migrations/run",
