@@ -25,8 +25,8 @@ type ContractWrapper = {
   "0xa4": string;
 };
 
-export type DBETVETTokenContract = ContractWrapper;
-export type ExchangeContract = ContractWrapper;
-export type MarketContract = ContractWrapper;
-export type BettingExchangeContract = ContractWrapper;
-export type VERSION = string;
+export declare const DBETVETTokenContract: ContractWrapper;
+export declare const ExchangeContract: ContractWrapper;
+export declare const MarketContract: ContractWrapper;
+export declare const BettingExchangeContract: ContractWrapper;
+export declare const VERSION: string;
