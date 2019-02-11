@@ -1,6 +1,6 @@
 # NPM Contract Package
 
-This are the contracts for Decent.bet P2P Market. Registered in NPM as `@decent-bet/contract-p2p`.
+These are the contracts for Decent.bet P2P Market. Registered in NPM as `@decent-bet/contract-p2p`.
 
 ## To Install:
 
