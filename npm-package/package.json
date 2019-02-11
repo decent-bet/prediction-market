@@ -1,0 +1,12 @@
+{
+  "name": "contract-p2p",
+  "version": "0.1.0",
+  "description": "Packaged contracts for public NPM",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "github.com/decent-bet/prediction-market"
+  },
+  "author": "Roberto E. Zubieta <roberto@decent.bet>",
+  "license": "GPL-3.0"
+}
