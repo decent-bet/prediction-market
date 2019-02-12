@@ -7,7 +7,7 @@
     "watch": "cross-env tsc -w",
     "build": "cross-env tsc",
     "clean": "shx rm -rf lib",
-    "relayer_server": "cross-env yarn build && node ./lib/index.js"
+    "relayer_server": "cross-env npm run build && node ./lib/index.js"
   },
   "author": "dev <dev@decent.bet>",
   "license": "MIT",
@@ -41,7 +41,6 @@
     "cross-env": "^5.1.4",
     "download-cli": "^1.0.5",
     "ethereum-types": "^1.0.5",
-    "ganache-cli": "6.1.6",
     "make-promises-safe": "^1.1.0",
     "npm-run-all": "^4.1.2",
     "shx": "^0.2.2",
