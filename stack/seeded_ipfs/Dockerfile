@@ -1,2 +1,3 @@
 FROM ipfs/go-ipfs:latest
-COPY ./data /data/ipfs
+COPY --chown=ipfs:users ./data /data/ipfs
+RUN ls -l /data/ipfs
