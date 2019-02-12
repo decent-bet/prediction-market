@@ -82,7 +82,10 @@ contract Market is
     function setBettingExchange(address _exchange)
     public
     returns (bool) {
-        require(msg.sender == owner);
+        require(
+            msg.sender == owner,
+            "INVALID_SENDER"
+        );
         exchange = _exchange;
         return true;
     }
@@ -114,31 +117,49 @@ contract Market is
     public
     returns (bytes32) {
         // Betting exchange address must be set
-        require(exchange != address(0));
+        require(
+            exchange != address(0),
+            "INVALID_EXCHANGE_ADDRESS"
+        );
         // msg.sender must be an admin
-        require(admins[msg.sender]);
+        require(
+            admins[msg.sender],
+            "INVALID_SENDER"
+        );
         // marketOpen must be before eventStart and cannot be in the past
         require(
             marketOpen >= block.timestamp &&
-            marketOpen < eventStart
+            marketOpen < eventStart,
+            "INVALID_MARKET_OPEN"
         );
         // marketClose must be after marketOpen and before eventStart
         require(
             marketClose > marketOpen &&
-            marketClose < eventStart
+            marketClose < eventStart,
+            "INVALID_MARKET_CLOSE"
         );
         // eventStart cannot be in the past
-        require(eventStart >= block.timestamp);
+        require(
+            eventStart >= block.timestamp,
+            "INVALID_EVENT_START"
+        );
         // Outcomes must be greater than or equal to 1
-        require(outcomes.length >= 1);
+        require(
+            outcomes.length >= 1,
+            "INVALID_OUTCOMES"
+        );
         // minBet and maxBet cannot be 0 and minBet must always be lesser or equal to maxBet
         require(
             minBet != 0 &&
             maxBet != 0 &&
-            maxBet >= minBet
+            maxBet >= minBet,
+            "INVALID_BET_AMOUNTS"
         );
         // IPFS hash must not be null
-        require(bytes(ipfsHash).length != 0);
+        require(
+            bytes(ipfsHash).length != 0,
+            "INVALID_IPFS_HASH"
+        );
 
         // Create betting market and retrieve it's unique ID
         bytes32 id = createBettingMarketInternal(
@@ -299,18 +320,30 @@ contract Market is
     public
     returns (bool) {
         // Only admins can set winning outcomes
-        require(admins[msg.sender]);
+        require(
+            admins[msg.sender],
+            "INVALID_SENDER"
+        );
         // Market must exist
-        require(markets[id].outcomes.length > 0);
+        require(
+            markets[id].outcomes.length > 0,
+            "INVALID_MARKET_ID"
+        );
         // Market must be closed
-        require(markets[id].marketClose < block.timestamp);
+        require(
+            markets[id].marketClose < block.timestamp,
+            "INVALID_MARKET_CLOSE"
+        );
         // Outcome must be valid
         bool isValid;
         for(uint i = 0; i < markets[id].outcomes.length; i++) {
             if(markets[id].outcomes[i] == outcome)
                 isValid = true;
         }
-        require(isValid);
+        require(
+            isValid,
+            "INVALID_OUTCOME"
+        );
         // Set winning outcome in market
         markets[id].winningOutcome = outcome;
         // Emit winning outcome event
@@ -330,11 +363,20 @@ contract Market is
     public
     returns (uint256) {
         // Market must exist
-        require(markets[marketId].outcomes.length > 0);
+        require(
+            markets[marketId].outcomes.length > 0,
+            "INVALID_MARKET_ID"
+        );
         // Market must be closed
-        require(markets[marketId].marketClose < block.timestamp);
+        require(
+            markets[marketId].marketClose < block.timestamp,
+            "INVALID_MARKET_CLOSE"
+        );
         // Market must be resolved
-        require(markets[marketId].winningOutcome != 0x0);
+        require(
+            markets[marketId].winningOutcome != 0x0,
+            "MARKET_NOT_RESOLVED"
+        );
         // User must own winning outcome long shares or losing outcome short shares
         uint256 profitPerFavorableOutcomeToken =
             calculateProfitPerFavorableOutcomeShareToken(
@@ -476,7 +518,10 @@ contract Market is
     )
     public
     returns (bool) {
-        require(msg.sender == owner);
+        require(
+            msg.sender == owner,
+            "INVALID_SENDER"
+        );
         admins[_address] = true;
         emit LogAddAdmin(_address);
     }
@@ -491,7 +536,10 @@ contract Market is
     )
     public
     returns (bool) {
-        require(msg.sender == owner);
+        require(
+            msg.sender == owner,
+            "INVALID_SENDER"
+        );
         admins[_address] = false;
         emit LogRemoveAdmin(_address);
     }

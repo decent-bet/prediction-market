@@ -204,7 +204,8 @@ contract BettingExchange is
             ).mint(
                 takerAddress,
                 takerAssetFillAmount
-            )
+            ),
+            "MINT_TOKENS_FAIL"
         );
 
         // Contract would execute the 0x transaction for 100 longs and 10 DBETs between maker and taker
@@ -235,7 +236,8 @@ contract BettingExchange is
                 takerAddress,
                 address(this),
                 takerAssetFillAmount
-            )
+            ),
+            "TOKEN_TRANSFER_FAIL"
         );
 
         // Contract would mint takerAssetFillAmount short share tokens (assuming maker is long) for the taker
@@ -247,7 +249,8 @@ contract BettingExchange is
             ).mint(
                 takerAddress,
                 takerAssetFillAmount
-            )
+            ),
+            "MINT_TOKENS_FAIL"
         );
 
         // Maker would have 100 long share tokens, taker would have 100 short share tokens and contract would have 100 DBETs escrow-ed
