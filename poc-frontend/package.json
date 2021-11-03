@@ -43,7 +43,7 @@
     "sanitize.css": "^5.0.0",
     "thorify": "0.3.5",
     "truffle-hdwallet-provider": "^1.0.2",
-    "validator": "^10.2.0",
+    "validator": "^13.7.0",
     "web3": "^1.0.0-beta.37"
   },
   "eslintConfig": {
